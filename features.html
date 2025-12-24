@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Функционал — Discord Bot</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --bg:#0e0e0e;
+    --card:#141414;
+    --border:#232323;
+    --text:#ffffff;
+    --muted:#bdbdbd;
+    --accent:#2a7cff;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin:0;
+    font-family:Inter,system-ui,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+}
+
+/* NAV */
+.nav {
+    position:sticky;
+    top:0;
+    background:rgba(14,14,14,.9);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--border);
+    z-index:100;
+}
+.nav-inner {
+    max-width:860px;
+    margin:0 auto;
+    padding:14px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+.nav-left { display:flex; align-items:center; gap:10px; }
+.nav-logo {
+    width:30px;height:30px;border-radius:50%;
+    background:radial-gradient(circle at 30% 30%,#3a8cff,#1b3f7a);
+    display:flex;align-items:center;justify-content:center;
+    font-weight:700;font-size:14px;
+}
+.nav-links a {
+    margin-left:22px;
+    font-size:14px;
+    color:var(--muted);
+    text-decoration:none;
+}
+.nav-links a:hover { color:#fff; }
+
+/* PAGE */
+.page {
+    max-width:860px;
+    margin:0 auto;
+    padding:80px 20px 100px;
+}
+
+h1 { font-size:44px; margin-bottom:20px; }
+h2 { font-size:24px; margin:70px 0 25px; }
+
+p {
+    font-size:18px;
+    color:var(--muted);
+    line-height:1.65;
+    margin-bottom:18px;
+}
+
+/* CARDS GRID */
+.cards {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:26px;
+    perspective:1200px;
+}
+
+/* CARD */
+.cmd-card {
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:28px 26px;
+    transform-style:preserve-3d;
+    transition:transform .2s ease, box-shadow .2s ease;
+    will-change:transform;
+    opacity:0;
+    transform:translateY(40px);
+}
+
+.cmd-card.visible {
+    opacity:1;
+    transform:translateY(0);
+    transition:opacity .6s ease, transform .6s ease;
+}
+
+.cmd-card:hover {
+    box-shadow:0 30px 70px rgba(0,0,0,.45);
+}
+
+/* PARALLAX LAYERS */
+.cmd-name {
+    display:block;
+    font-family:monospace;
+    font-size:16px;
+    color:var(--accent);
+    margin-bottom:14px;
+    transform:translateZ(40px);
+}
+
+.cmd-desc {
+    font-size:17px;
+    color:var(--muted);
+    line-height:1.6;
+    transform:translateZ(25px);
+}
+
+.cmd-meta {
+    margin-top:16px;
+    font-size:14px;
+    color:#8a8a8a;
+    transform:translateZ(15px);
+}
+
+/* FOOTER */
+footer {
+    margin-top:90px;
+    padding-top:25px;
+    border-top:1px solid var(--border);
+    font-size:14px;
+    color:#8a8a8a;
+}
+</style>
+</head>
+
+<body>
+
+<nav class="nav">
+    <div class="nav-inner">
+        <div class="nav-left">
+            <div class="nav-logo">F</div>
+            <strong>Fembot</strong>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Законность</a>
+            <a href="features.html">Функционал</a>
+        </div>
+    </div>
+</nav>
+
+<div class="page">
+
+<h1>Функционал</h1>
+
+<p>
+Бот предназначен для поиска и анализа информации,
+основанной исключительно на общедоступных сообщениях Discord.
+</p>
+
+<h2>Команды бота</h2>
+
+<div class="cards">
+
+    <div class="cmd-card">
+        <span class="cmd-name">.search &lt;user_id&gt;</span>
+        <div class="cmd-desc">
+            Поиск сообщений, опубликованных пользователем
+            с указанным техническим идентификатором Discord
+            в открытых серверах и каналах.
+        </div>
+        <div class="cmd-meta">Публичные источники</div>
+    </div>
+
+    <div class="cmd-card">
+        <span class="cmd-name">.search &lt;username&gt;</span>
+        <div class="cmd-desc">
+            Поиск сообщений по имени пользователя
+            или никнейму, если он присутствует
+            в общедоступном контенте.
+        </div>
+        <div class="cmd-meta">Агрегированные данные</div>
+    </div>
+
+    <div class="cmd-card">
+        <span class="cmd-name">.profile &lt;user_id | username&gt;</span>
+        <div class="cmd-desc">
+            Отображает обобщённую статистику активности
+            пользователя на основе открытых сообщений
+            без идентификации личности.
+        </div>
+        <div class="cmd-meta">Без персональных данных</div>
+    </div>
+
+    <div class="cmd-card">
+        <span class="cmd-name">.support</span>
+        <div class="cmd-desc">
+            Позволяет связаться с поддержкой 
+            по поводу технических вопросов, 
+            или идей по улучшению системы.
+        </div>
+        <div class="cmd-meta">Полная конфиденциальность</div>
+    </div>
+
+</div>
+
+<footer>
+© 2025 • Fembot<br>
+Описание носит справочный характер
+</footer>
+
+</div>
+
+<!-- SCRIPT -->
+<script>
+/* 3D + PARALLAX */
+document.querySelectorAll('.cmd-card').forEach(card => {
+    const maxRotate = 10;
+
+    card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        const rotateX = ((y - centerY) / centerY) * -maxRotate;
+        const rotateY = ((x - centerX) / centerX) * maxRotate;
+
+        card.style.transform = `
+            rotateX(${rotateX}deg)
+            rotateY(${rotateY}deg)
+        `;
+    });
+
+    card.addEventListener('mouseleave', () => {
+        card.style.transform = 'rotateX(0deg) rotateY(0deg)';
+    });
+});
+
+/* APPEAR ANIMATION (teleglog-style) */
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.cmd-card').forEach(card => {
+    observer.observe(card);
+});
+</script>
+
+</body>
+</html>
