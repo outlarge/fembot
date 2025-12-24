@@ -4,9 +4,7 @@
 <meta charset="UTF-8">
 <title>Законность — Fembot</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
 <style>
 :root {
     --bg:#0e0e0e;
@@ -16,17 +14,13 @@
     --muted:#bdbdbd;
     --accent:#2a7cff;
 }
-
 * { box-sizing:border-box; }
-
 body {
     margin:0;
     font-family:Inter,system-ui,sans-serif;
     background:var(--bg);
     color:var(--text);
 }
-
-/* NAV */
 .nav {
     position:sticky;
     top:0;
@@ -61,32 +55,25 @@ body {
     text-decoration:none;
 }
 .nav-links a:hover { color:#fff; }
-
-/* PAGE */
 .page {
     max-width:860px;
     margin:0 auto;
     padding:80px 20px 100px;
 }
-
 h1 {
     font-size:44px;
     margin-bottom:26px;
 }
-
 h2 {
     font-size:24px;
     margin:70px 0 20px;
 }
-
 p {
     font-size:18px;
     line-height:1.65;
     color:var(--muted);
     margin-bottom:18px;
 }
-
-/* NOTE */
 .note {
     background:var(--card);
     border:1px solid var(--border);
@@ -97,8 +84,6 @@ p {
     font-size:16px;
     color:var(--muted);
 }
-
-/* FOOTER */
 footer {
     margin-top:90px;
     padding-top:25px;
@@ -106,24 +91,19 @@ footer {
     font-size:14px;
     color:#8a8a8a;
 }
-
-/* APPEAR ANIMATION */
 .reveal {
     opacity:0;
     transform:translateY(32px);
     transition:opacity .7s ease, transform .7s ease;
     transition-delay:var(--delay,0ms);
 }
-
 .reveal.visible {
     opacity:1;
     transform:translateY(0);
 }
 </style>
 </head>
-
 <body>
-
 <nav class="nav">
     <div class="nav-inner">
         <div class="nav-left">
