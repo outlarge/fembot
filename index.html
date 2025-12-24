@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Законность — Fembot</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --bg:#0e0e0e;
+    --card:#141414;
+    --border:#232323;
+    --text:#ffffff;
+    --muted:#bdbdbd;
+    --accent:#2a7cff;
+}
+
+* { box-sizing:border-box; }
+
+body {
+    margin:0;
+    font-family:Inter,system-ui,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+}
+
+/* NAV */
+.nav {
+    position:sticky;
+    top:0;
+    background:rgba(14,14,14,.9);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--border);
+    z-index:100;
+}
+.nav-inner {
+    max-width:860px;
+    margin:0 auto;
+    padding:14px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+.nav-left {
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+.nav-logo {
+    width:30px;height:30px;border-radius:50%;
+    background:radial-gradient(circle at 30% 30%,#3a8cff,#1b3f7a);
+    display:flex;align-items:center;justify-content:center;
+    font-weight:700;font-size:14px;
+}
+.nav-links a {
+    margin-left:22px;
+    font-size:14px;
+    color:var(--muted);
+    text-decoration:none;
+}
+.nav-links a:hover { color:#fff; }
+
+/* PAGE */
+.page {
+    max-width:860px;
+    margin:0 auto;
+    padding:80px 20px 100px;
+}
+
+h1 {
+    font-size:44px;
+    margin-bottom:26px;
+}
+
+h2 {
+    font-size:24px;
+    margin:70px 0 20px;
+}
+
+p {
+    font-size:18px;
+    line-height:1.65;
+    color:var(--muted);
+    margin-bottom:18px;
+}
+
+/* NOTE */
+.note {
+    background:var(--card);
+    border:1px solid var(--border);
+    border-left:3px solid var(--accent);
+    border-radius:14px;
+    padding:22px 24px;
+    margin-top:30px;
+    font-size:16px;
+    color:var(--muted);
+}
+
+/* FOOTER */
+footer {
+    margin-top:90px;
+    padding-top:25px;
+    border-top:1px solid var(--border);
+    font-size:14px;
+    color:#8a8a8a;
+}
+
+/* APPEAR ANIMATION */
+.reveal {
+    opacity:0;
+    transform:translateY(32px);
+    transition:opacity .7s ease, transform .7s ease;
+    transition-delay:var(--delay,0ms);
+}
+
+.reveal.visible {
+    opacity:1;
+    transform:translateY(0);
+}
+</style>
+</head>
+
+<body>
+
+<nav class="nav">
+    <div class="nav-inner">
+        <div class="nav-left">
+            <div class="nav-logo">F</div>
+            <strong>Fembot</strong>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Законность</a>
+            <a href="features.html">Функционал</a>
+        </div>
+    </div>
+</nav>
+
+<div class="page">
+
+<h1 class="reveal">Законность и конфиденциальность</h1>
+
+<p class="reveal">
+Настоящая Политика конфиденциальности описывает принципы работы сервиса
+<strong>Fembot</strong> в части обработки информации и данных пользователей.
+</p>
+
+<h2 class="reveal">1. Общие положения</h2>
+
+<p class="reveal">
+Сервис не осуществляет сбор, хранение или обработку персональных данных.
+</p>
+
+<p class="reveal">
+Использование сервиса не требует регистрации или предоставления личной информации.
+</p>
+
+<h2 class="reveal">2. Источники информации</h2>
+
+<p class="reveal">
+Анализ выполняется исключительно на основе общедоступных сообщений Discord,
+предназначенных для публичного просмотра.
+</p>
+
+<p class="reveal">
+Личные сообщения, закрытые каналы и приватные серверы не обрабатываются.
+</p>
+
+<h2 class="reveal">3. Характер данных</h2>
+
+<p class="reveal">
+Используются только обезличенные технические идентификаторы,
+не позволяющие установить личность человека.
+</p>
+
+<h2 class="reveal">4. Cookies и трекинг</h2>
+
+<p class="reveal">
+Сайт не использует cookies, аналитику, fingerprinting или иные методы слежения.
+</p>
+
+<h2 class="reveal">5. Изменения политики</h2>
+
+<p class="reveal">
+Администрация вправе изменять Политику без предварительного уведомления.
+</p>
+
+<footer class="reveal">
+© 2025 • Fembot<br>
+Информация представлена в ознакомительных целях
+</footer>
+
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const elements = document.querySelectorAll('.reveal');
+
+    elements.forEach((el, i) => {
+        el.style.setProperty('--delay', `${i * 70}ms`);
+    });
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold:0.15 });
+
+    elements.forEach(el => observer.observe(el));
+});
+</script>
+
+</body>
+</html>
